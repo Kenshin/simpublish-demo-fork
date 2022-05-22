@@ -56,6 +56,7 @@ func GetArticleByTitle(title string) (string, error) {
 		}
 
 		ext := filepath.Ext(name)
+		fmt.Println("ext:", ext)
 		if ext != "html" && ext != "md" {
 			continue
 		}
