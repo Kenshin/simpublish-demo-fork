@@ -113,14 +113,17 @@ func ArticleHandler(w http.ResponseWriter, r *http.Request) {
 	var filename string
 	var getarticleerr error
 	if isDigit(id_or_title_str) {
+		fmt.Println("id_or_title_str is digit")
 		id, err := strconv.ParseUint(id_or_title_str, 10, 64)
 		if err != nil {
 			log.Println("Url Param 'id' is not a valid uint64")
 			return
 		}
 		filename, getarticleerr = GetArticleById(id)
+		fmt.Println("filename:", filename, "getarticleerr:", getarticleerr)
 	} else {
 		filename, getarticleerr = GetArticleByTitle(id_or_title_str)
+		fmt.Println("filename:", filename, "getarticleerr:", getarticleerr)
 	}
 	if getarticleerr != nil {
 		// 404
